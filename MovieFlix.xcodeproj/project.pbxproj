@@ -18,6 +18,8 @@
 		04981E892ED450D400C9EC3D /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981E882ED450D400C9EC3D /* ApiConstants.swift */; };
 		04981E8C2ED4513700C9EC3D /* MovieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981E8B2ED4513700C9EC3D /* MovieRouter.swift */; };
 		04981E8F2ED4553400C9EC3D /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981E8E2ED4553400C9EC3D /* LoadingIndicatorView.swift */; };
+		04981E922ED4607F00C9EC3D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 04981E912ED4607F00C9EC3D /* Kingfisher */; };
+		04981E942ED4726500C9EC3D /* EmptySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981E932ED4726500C9EC3D /* EmptySearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 		04981E882ED450D400C9EC3D /* ApiConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		04981E8B2ED4513700C9EC3D /* MovieRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRouter.swift; sourceTree = "<group>"; };
 		04981E8E2ED4553400C9EC3D /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorView.swift; sourceTree = "<group>"; };
+		04981E932ED4726500C9EC3D /* EmptySearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySearchView.swift; sourceTree = "<group>"; };
 		04F22C662ED40C9400AE62EF /* MovieFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F22C732ED40C9600AE62EF /* MovieFlixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieFlixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F22C7D2ED40C9600AE62EF /* MovieFlixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieFlixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04981E922ED4607F00C9EC3D /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +131,7 @@
 				04981DFD2ED447C900C9EC3D /* SearchView.swift */,
 				04981E802ED44CBD00C9EC3D /* SearchViewModel.swift */,
 				04981E822ED4507600C9EC3D /* MovieModel.swift */,
+				04981E932ED4726500C9EC3D /* EmptySearchView.swift */,
 			);
 			path = SearchView;
 			sourceTree = "<group>";
@@ -211,6 +216,7 @@
 			);
 			name = MovieFlix;
 			packageProductDependencies = (
+				04981E912ED4607F00C9EC3D /* Kingfisher */,
 			);
 			productName = MovieFlix;
 			productReference = 04F22C662ED40C9400AE62EF /* MovieFlix.app */;
@@ -294,6 +300,9 @@
 			);
 			mainGroup = 04F22C5D2ED40C9400AE62EF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				04981E902ED4607F00C9EC3D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 04F22C672ED40C9400AE62EF /* Products */;
 			projectDirPath = "";
@@ -340,6 +349,7 @@
 				04981E8F2ED4553400C9EC3D /* LoadingIndicatorView.swift in Sources */,
 				04981E012ED44ABA00C9EC3D /* NetworkManager.swift in Sources */,
 				04981E812ED44CBD00C9EC3D /* SearchViewModel.swift in Sources */,
+				04981E942ED4726500C9EC3D /* EmptySearchView.swift in Sources */,
 				04981DF72ED4479600C9EC3D /* ContentView.swift in Sources */,
 				04981E892ED450D400C9EC3D /* ApiConstants.swift in Sources */,
 				04981E8C2ED4513700C9EC3D /* MovieRouter.swift in Sources */,
@@ -688,6 +698,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04981E902ED4607F00C9EC3D /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04981E912ED4607F00C9EC3D /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04981E902ED4607F00C9EC3D /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04F22C5E2ED40C9400AE62EF /* Project object */;
 }
