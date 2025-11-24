@@ -1,0 +1,64 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcscmblueprint
+
+# User-specific settings
+xcuserdata/
+
+# Swift Package Manager
+.build/
+Packages/
+.swiftpm/
+Package.resolved
+
+# CocoaPods
+Pods/
+Podfile.lock
+*.xcworkspace
+
+# Archives
+*.xcarchive
+
+# iOS device files
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Provisioning profiles
+*.mobileprovision
+*.provisionprofile
+
+# App icons, exported assets
+*.iconset
+*.imageset
+
+# Logs
+nohup.out
+*.log
+
+# Temporary files
+*.swp
+*.swm
+*.tmp
+*.temp
+*.orig
+
+# Environment files
+.env
+
+# Firebase / Google (if applicable)
+GoogleService-Info.plist
+
+# Ignore generated interface files
+*.generated.swift
+
+# Ignore simulator data
+*.deviceinfo
+*.device.set
+
+# Xcode Preview files
+*.xcpreviewdata
+
+.DS_Store
