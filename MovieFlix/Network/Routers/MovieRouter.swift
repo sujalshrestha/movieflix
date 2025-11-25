@@ -9,7 +9,6 @@ import Foundation
 
 public enum MovieRouter {
     case searchMovie(query: String, page: Int)
-//    case movieDetails(id: Int)
 }
 
 extension MovieRouter: NetworkURLRequest {

@@ -67,7 +67,7 @@ final class SearchViewModel: ObservableObject {
             forEntityName: "Movies",
             in: persistenceManager.context
         ) else {
-            print("Failed to get entity description")
+            debugPrint("Failed to get entity description")
             return
         }
         
