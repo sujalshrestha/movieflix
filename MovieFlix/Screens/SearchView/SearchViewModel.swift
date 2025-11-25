@@ -14,6 +14,7 @@ final class SearchViewModel: ObservableObject {
     @Published var isLoading: Bool = false
     @Published var movieData: [Movie] = []
     @Published var onApiError: (isError: Bool, message: String) = (false, "")
+    @Published var favoriteMoviesCount: Int = 0
     
     private var currentPage = 1
     private var totalPages = 1
@@ -106,5 +107,10 @@ final class SearchViewModel: ObservableObject {
             )
         }
         self.movieData = movieArray
+    }
+    
+    func getFavoriteMoviesCount() {
+        let savedFavorites: [FavoriteMovies] = PersistenceManager.shared.fetch(FavoriteMovies.self)
+        favoriteMoviesCount = savedFavorites.count
     }
 }

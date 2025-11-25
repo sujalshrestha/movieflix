@@ -76,8 +76,21 @@ struct SearchView: View {
                     viewModel?.getMoviesList(for: trimmedValue, reset: true)
                 }
             }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        
+                    } label: {
+                        Image(systemName: "heart")
+                    }
+                    .badge(viewModel.favoriteMoviesCount)
+                }
+            }
             .onViewDidLoad {
                 viewModel.getSavedMovies()
+            }
+            .onAppear {
+                viewModel.getFavoriteMoviesCount()
             }
         }
         .preferredColorScheme(.dark)
