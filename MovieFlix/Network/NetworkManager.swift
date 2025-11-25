@@ -29,6 +29,24 @@ public enum NetworkError: Error {
     case decodingError
     case serverError(String)
     case unknown
+    case noInternet
+}
+
+extension NetworkError {
+    var message: String {
+        switch self {
+        case .invalidURL:
+            return "Invalid request. Please try again later."
+        case .serverError(let message):
+            return "\(message). Please try again later."
+        case .decodingError:
+            return "Failed to process data. Please try again."
+        case .unknown:
+            return "Something went wrong. Please try again."
+        case .noInternet:
+            return "No internet connection. Check your network and try again."
+        }
+    }
 }
 
 public protocol NetworkURLRequest {
@@ -92,9 +110,13 @@ class NetworkManager: NetworkServiceProtocol {
                 debugPrint("JSON RESPONSE:", jsonString)
             }
             
-            if let error = error {
+            if let error = error as NSError? {
                 DispatchQueue.main.async {
-                    completion(.failure(.serverError(error.localizedDescription)))
+                    if error.domain == NSURLErrorDomain && error.code == NSURLErrorNotConnectedToInternet {
+                        completion(.failure(.noInternet))
+                    } else {
+                        completion(.failure(.serverError(error.localizedDescription)))
+                    }
                 }
                 return
             }
@@ -119,5 +141,4 @@ class NetworkManager: NetworkServiceProtocol {
             }
         }.resume()
     }
-
 }

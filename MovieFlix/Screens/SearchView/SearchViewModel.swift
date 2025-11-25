@@ -41,8 +41,8 @@ final class SearchViewModel: ObservableObject {
                 saveMoviesLocally(movieArray: response.results)
                 
             case .failure(let error):
-                print(error)
-                self.onApiError = (true, error.localizedDescription)
+                debugPrint("Error: ", error)
+                self.onApiError = (true, error.message)
             }
         }
     }
