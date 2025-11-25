@@ -31,15 +31,17 @@ struct SearchView: View {
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                         } else {
                             List(viewModel.movieData, id: \.id) { movie in
-                                MovieCell(movie: movie)
-                                    .onAppear {
-                                        viewModel.loadMoreIfNeeded(currentItem: movie)
-                                    }
+                                NavigationLink(destination: MovieDetailsView(movie: movie), label: {
+                                    MovieCell(movie: movie)
+                                }
+                                )
+                                .onAppear {
+                                    viewModel.loadMoreIfNeeded(currentItem: movie)
+                                }
                             }
                             .listStyle(.plain)
                         }
                     }
-                    
                 }
                 
                 if viewModel.isLoading {
@@ -82,8 +84,9 @@ struct MovieCell: View {
     
     var body: some View {
         HStack(spacing: 12) {
-            if let imageUrl = movie.posterPath {
-                KFImage(URL(string: "https://image.tmdb.org/t/p/w154\(imageUrl)"))
+            if !movie.posterPath.isEmpty {
+                let imageUrl = movie.posterPath
+                KFImage(URL(string: AppConstants.getPosterImagePath(imageUrl: imageUrl)))
                     .placeholder {
                         ProgressView()
                     }
@@ -91,20 +94,19 @@ struct MovieCell: View {
                     .frame(width: 80, height: 120)
                     .aspectRatio(contentMode: .fill)
                     .clipped()
-                
             } else {
                 Rectangle()
                     .fill(Color.gray.opacity(0.3))
                     .frame(width: 80, height: 120)
             }
             
-            
             VStack(alignment: .leading, spacing: 8) {
-                Text(movie.title ?? "")
+                Text(movie.title)
                     .font(.title3)
                 
-                Text("Release Date: \(movie.releaseDate ?? "")")
+                Text("Release Date: \(movie.releaseDate)")
                     .font(.caption)
+                
             }
         }
         
