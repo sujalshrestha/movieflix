@@ -13,7 +13,6 @@ struct SearchView: View {
     @State private var searchText = ""
     @StateObject var viewModel = SearchViewModel()
     @State private var searchTask: Task<Void, Never>?
-    @State private var viewDidLoad = false
     
     var body: some View {
         NavigationStack {
@@ -77,11 +76,8 @@ struct SearchView: View {
                     viewModel?.getMoviesList(for: trimmedValue, reset: true)
                 }
             }
-            .onAppear {
-                if viewDidLoad == false {
-                    viewDidLoad = true
-                    viewModel.getSavedMovies()
-                }
+            .onViewDidLoad {
+                viewModel.getSavedMovies()
             }
         }
         .preferredColorScheme(.dark)

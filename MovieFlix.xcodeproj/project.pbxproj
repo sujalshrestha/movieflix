@@ -15,6 +15,8 @@
 		046AF9E82ED56D7A00A53DF0 /* Movies+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9E62ED56D7A00A53DF0 /* Movies+CoreDataProperties.swift */; };
 		046AF9E92ED56D7A00A53DF0 /* Movies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9E52ED56D7A00A53DF0 /* Movies+CoreDataClass.swift */; };
 		046AF9EA2ED56D7A00A53DF0 /* Movies+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9E62ED56D7A00A53DF0 /* Movies+CoreDataProperties.swift */; };
+		046AF9ED2ED57EB600A53DF0 /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9EC2ED57EB600A53DF0 /* ViewDidLoadModifier.swift */; };
+		046AF9EF2ED57ED000A53DF0 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9EE2ED57ED000A53DF0 /* View+Ext.swift */; };
 		04981DF72ED4479600C9EC3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981DF42ED4479600C9EC3D /* ContentView.swift */; };
 		04981DF82ED4479600C9EC3D /* MovieFlixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981DF52ED4479600C9EC3D /* MovieFlixApp.swift */; };
 		04981DF92ED4479600C9EC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04981DF32ED4479600C9EC3D /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 		046AF9E32ED56CAA00A53DF0 /* MovieFlixModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MovieFlixModel.xcdatamodel; sourceTree = "<group>"; };
 		046AF9E52ED56D7A00A53DF0 /* Movies+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movies+CoreDataClass.swift"; sourceTree = "<group>"; };
 		046AF9E62ED56D7A00A53DF0 /* Movies+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movies+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		046AF9EC2ED57EB600A53DF0 /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
+		046AF9EE2ED57ED000A53DF0 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		04981DF32ED4479600C9EC3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04981DF42ED4479600C9EC3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		04981DF52ED4479600C9EC3D /* MovieFlixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFlixApp.swift; sourceTree = "<group>"; };
@@ -122,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				046AF9DD2ED55D6800A53DF0 /* Double+Ext.swift */,
+				046AF9EE2ED57ED000A53DF0 /* View+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -134,6 +139,14 @@
 				046AF9E62ED56D7A00A53DF0 /* Movies+CoreDataProperties.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		046AF9EB2ED57EA700A53DF0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				046AF9EC2ED57EB600A53DF0 /* ViewDidLoadModifier.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		04981DF62ED4479600C9EC3D /* MovieFlix */ = {
@@ -191,6 +204,7 @@
 		04981E842ED4509E00C9EC3D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				046AF9EB2ED57EA700A53DF0 /* Helpers */,
 				046AF9DC2ED55D5D00A53DF0 /* Extensions */,
 				04981E8D2ED4552A00C9EC3D /* CustomViews */,
 				04981E852ED450A700C9EC3D /* Constants */,
@@ -400,10 +414,12 @@
 				04981DF72ED4479600C9EC3D /* ContentView.swift in Sources */,
 				046AF9E42ED56CAA00A53DF0 /* MovieFlixModel.xcdatamodeld in Sources */,
 				046AF9DB2ED5531600A53DF0 /* MovieDetailsView.swift in Sources */,
+				046AF9EF2ED57ED000A53DF0 /* View+Ext.swift in Sources */,
 				04981E892ED450D400C9EC3D /* ApiConstants.swift in Sources */,
 				04981E8C2ED4513700C9EC3D /* MovieRouter.swift in Sources */,
 				04981E872ED450B500C9EC3D /* AppConstants.swift in Sources */,
 				04981DF82ED4479600C9EC3D /* MovieFlixApp.swift in Sources */,
+				046AF9ED2ED57EB600A53DF0 /* ViewDidLoadModifier.swift in Sources */,
 				04981DFE2ED447C900C9EC3D /* SearchView.swift in Sources */,
 				046AF9E12ED56B6400A53DF0 /* PersistenceManager.swift in Sources */,
 			);
