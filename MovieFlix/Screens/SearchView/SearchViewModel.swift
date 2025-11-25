@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import CoreData
 
 final class SearchViewModel: ObservableObject {
     
@@ -34,9 +35,10 @@ final class SearchViewModel: ObservableObject {
             
             switch result {
             case .success(let response):
-                self.movieData.append(contentsOf: response.results)
-                self.currentPage += 1
-                self.totalPages = response.totalPages
+                movieData.append(contentsOf: response.results)
+                currentPage += 1
+                totalPages = response.totalPages
+                saveMoviesLocally(movieArray: response.results)
                 
             case .failure(let error):
                 print(error)
@@ -57,5 +59,52 @@ final class SearchViewModel: ObservableObject {
         if last.id == item.id && currentPage <= totalPages && !isLoading {
             getMoviesList(for: currentSearchText, reset: false)
         }
+    }
+    
+    private func saveMoviesLocally(movieArray: [Movie]) {
+        let persistenceManager = PersistenceManager.shared
+        guard let entity = NSEntityDescription.entity(
+            forEntityName: "Movies",
+            in: persistenceManager.context
+        ) else {
+            print("Failed to get entity description")
+            return
+        }
+        
+        for movieData in movieArray {
+            let existingMovies: [Movies] = persistenceManager.fetchWithPredicate(Movies.self, key: "id", with: "\(movieData.id)")
+            if existingMovies.isEmpty {
+                let movies = Movies(entity: entity, insertInto: persistenceManager.context)
+                movies.id = Int64(movieData.id)
+                movies.title = movieData.title
+                movies.overview = movieData.overview
+                movies.releaseDate = movieData.releaseDate
+                movies.posterPath = movieData.posterPath
+                movies.backdropPath = movieData.backdropPath
+                movies.voteAverage = movieData.voteAverage
+            }
+        }
+        
+        persistenceManager.save()
+    }
+    
+    func getSavedMovies() {
+        let savedMoviesArray = PersistenceManager.shared.fetch(Movies.self)
+        if savedMoviesArray.isEmpty { return }
+        var movieArray = [Movie]()
+        for savedMoviesData in savedMoviesArray {
+            movieArray.append(
+                Movie(
+                    id: Int(savedMoviesData.id),
+                    title: savedMoviesData.title ?? "",
+                    overview: savedMoviesData.overview ?? "",
+                    releaseDate: savedMoviesData.releaseDate ?? "",
+                    posterPath: savedMoviesData.posterPath ?? "",
+                    backdropPath: savedMoviesData.backdropPath ?? "",
+                    voteAverage: savedMoviesData.voteAverage
+                )
+            )
+        }
+        self.movieData = movieArray
     }
 }

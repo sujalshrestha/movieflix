@@ -13,6 +13,7 @@ struct SearchView: View {
     @State private var searchText = ""
     @StateObject var viewModel = SearchViewModel()
     @State private var searchTask: Task<Void, Never>?
+    @State private var viewDidLoad = false
     
     var body: some View {
         NavigationStack {
@@ -36,7 +37,9 @@ struct SearchView: View {
                                 }
                                 )
                                 .onAppear {
-                                    viewModel.loadMoreIfNeeded(currentItem: movie)
+                                    if !searchText.trimmingCharacters(in: .whitespaces).isEmpty {
+                                        viewModel.loadMoreIfNeeded(currentItem: movie)
+                                    }
                                 }
                             }
                             .listStyle(.plain)
@@ -50,7 +53,7 @@ struct SearchView: View {
                         .background(Color.black.opacity(0.3))
                 }
             }
-            .navigationTitle("MovieFlix")
+            .navigationTitle(AppConstants.appName)
             .navigationBarTitleDisplayMode(.large)
             .searchable(text: $searchText, prompt: "Search your favorite movies")
             .alert(AppConstants.appName, isPresented: $viewModel.onApiError.isError) {
@@ -64,6 +67,7 @@ struct SearchView: View {
                 let trimmedValue = newValue.trimmingCharacters(in: .whitespaces)
                 
                 if trimmedValue.isEmpty {
+                    viewModel.getSavedMovies()
                     return
                 }
                 
@@ -71,6 +75,12 @@ struct SearchView: View {
                     try? await Task.sleep(nanoseconds: 500 * 1_000_000)
                     guard !Task.isCancelled else { return }
                     viewModel?.getMoviesList(for: trimmedValue, reset: true)
+                }
+            }
+            .onAppear {
+                if viewDidLoad == false {
+                    viewDidLoad = true
+                    viewModel.getSavedMovies()
                 }
             }
         }
@@ -105,11 +115,9 @@ struct MovieCell: View {
                     .font(.title3)
                 
                 Text("Release Date: \(movie.releaseDate)")
-                    .font(.caption)
-                
+                    .font(.caption)   
             }
         }
-        
     }
 }
 
