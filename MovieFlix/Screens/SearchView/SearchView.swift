@@ -78,8 +78,8 @@ struct SearchView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
-                    Button {
-                        
+                    NavigationLink {
+                        FavoriteMoviesView()
                     } label: {
                         Image(systemName: "heart")
                     }

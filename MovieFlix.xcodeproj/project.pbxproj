@@ -34,6 +34,8 @@
 		04D224EF2ED5A83900A02618 /* FavoriteMovies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D224EC2ED5A83900A02618 /* FavoriteMovies+CoreDataClass.swift */; };
 		04D224F02ED5A83900A02618 /* FavoriteMovies+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D224EC2ED5A83900A02618 /* FavoriteMovies+CoreDataClass.swift */; };
 		04D224F12ED5A83900A02618 /* FavoriteMovies+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D224ED2ED5A83900A02618 /* FavoriteMovies+CoreDataProperties.swift */; };
+		04D224F42ED5B2E400A02618 /* FavoriteMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D224F32ED5B2E400A02618 /* FavoriteMoviesView.swift */; };
+		04D224F62ED5B34400A02618 /* FavoriteMoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D224F52ED5B34400A02618 /* FavoriteMoviesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		04D224EA2ED5A6A500A02618 /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		04D224EC2ED5A83900A02618 /* FavoriteMovies+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteMovies+CoreDataClass.swift"; sourceTree = "<group>"; };
 		04D224ED2ED5A83900A02618 /* FavoriteMovies+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoriteMovies+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		04D224F32ED5B2E400A02618 /* FavoriteMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesView.swift; sourceTree = "<group>"; };
+		04D224F52ED5B34400A02618 /* FavoriteMoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMoviesViewModel.swift; sourceTree = "<group>"; };
 		04F22C662ED40C9400AE62EF /* MovieFlix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFlix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F22C732ED40C9600AE62EF /* MovieFlixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieFlixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04F22C7D2ED40C9600AE62EF /* MovieFlixUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieFlixUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,6 +187,7 @@
 		04981DFB2ED447AD00C9EC3D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				04D224F22ED5B2D600A02618 /* FavoriteMovies */,
 				04981DFC2ED447B600C9EC3D /* SearchView */,
 				046AF9D92ED5530200A53DF0 /* MovieDetails */,
 			);
@@ -243,6 +248,15 @@
 				04981E932ED4726500C9EC3D /* EmptySearchView.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		04D224F22ED5B2D600A02618 /* FavoriteMovies */ = {
+			isa = PBXGroup;
+			children = (
+				04D224F32ED5B2E400A02618 /* FavoriteMoviesView.swift */,
+				04D224F52ED5B34400A02618 /* FavoriteMoviesViewModel.swift */,
+			);
+			path = FavoriteMovies;
 			sourceTree = "<group>";
 		};
 		04F22C5D2ED40C9400AE62EF = {
@@ -422,12 +436,14 @@
 				04981E812ED44CBD00C9EC3D /* SearchViewModel.swift in Sources */,
 				04D224EB2ED5A6A500A02618 /* MovieDetailsViewModel.swift in Sources */,
 				04981E942ED4726500C9EC3D /* EmptySearchView.swift in Sources */,
+				04D224F42ED5B2E400A02618 /* FavoriteMoviesView.swift in Sources */,
 				046AF9E42ED56CAA00A53DF0 /* MovieFlixModel.xcdatamodeld in Sources */,
 				046AF9DB2ED5531600A53DF0 /* MovieDetailsView.swift in Sources */,
 				046AF9EF2ED57ED000A53DF0 /* View+Ext.swift in Sources */,
 				04981E892ED450D400C9EC3D /* ApiConstants.swift in Sources */,
 				04981E8C2ED4513700C9EC3D /* MovieRouter.swift in Sources */,
 				04981E872ED450B500C9EC3D /* AppConstants.swift in Sources */,
+				04D224F62ED5B34400A02618 /* FavoriteMoviesViewModel.swift in Sources */,
 				04981DF82ED4479600C9EC3D /* MovieFlixApp.swift in Sources */,
 				046AF9ED2ED57EB600A53DF0 /* ViewDidLoadModifier.swift in Sources */,
 				04981DFE2ED447C900C9EC3D /* SearchView.swift in Sources */,

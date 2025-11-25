@@ -91,22 +91,19 @@ final class SearchViewModel: ObservableObject {
     
     func getSavedMovies() {
         let savedMoviesArray = PersistenceManager.shared.fetch(Movies.self)
-        if savedMoviesArray.isEmpty { return }
-        var movieArray = [Movie]()
-        for savedMoviesData in savedMoviesArray {
-            movieArray.append(
-                Movie(
-                    id: Int(savedMoviesData.id),
-                    title: savedMoviesData.title ?? "",
-                    overview: savedMoviesData.overview ?? "",
-                    releaseDate: savedMoviesData.releaseDate ?? "",
-                    posterPath: savedMoviesData.posterPath ?? "",
-                    backdropPath: savedMoviesData.backdropPath ?? "",
-                    voteAverage: savedMoviesData.voteAverage
-                )
+        guard !savedMoviesArray.isEmpty else { return }
+        
+        movieData = savedMoviesArray.map { savedMoviesData in
+            Movie(
+                id: Int(savedMoviesData.id),
+                title: savedMoviesData.title ?? "",
+                overview: savedMoviesData.overview ?? "",
+                releaseDate: savedMoviesData.releaseDate ?? "",
+                posterPath: savedMoviesData.posterPath ?? "",
+                backdropPath: savedMoviesData.backdropPath ?? "",
+                voteAverage: savedMoviesData.voteAverage
             )
         }
-        self.movieData = movieArray
     }
     
     func getFavoriteMoviesCount() {
