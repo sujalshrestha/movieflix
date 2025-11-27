@@ -42,3 +42,9 @@ MovieFlix is an iOS app built using **SwiftUI** that allows users to search for 
 1. Clone the repository:
 2. Open MovieFlix.xcodeproj in Xcode.
 3. Run the app on a simulator or device.
+
+---
+                                                                                    
+Notes / Compatibility
+
+This app has been developed and tested on iOS 26. Some features, such as the favorite list badge count on the navigation bar, may not appear correctly on older iOS versions like iOS 18 due to differences in SwiftUI APIs. Other functionalities, including search, movie details, and offline storage with Core Data, work as expected across supported versions.
