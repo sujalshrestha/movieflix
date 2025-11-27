@@ -20,6 +20,7 @@ class MockNetworkService: NetworkServiceProtocol {
 }
 
 class MockPersistenceManager: PersistenceProtocol {
+    
     var movies: [Movie] = []
     
     func fetch<T>(_ object: T.Type) -> [T] where T : NSManagedObject {
@@ -33,6 +34,8 @@ class MockPersistenceManager: PersistenceProtocol {
     func save() {}
     
     func deleteAll() { movies.removeAll() }
+    
+    func delete(_ objectType: NSManagedObject) { }    
 }
 
 @MainActor
@@ -128,20 +131,5 @@ final class SearchViewModelTests: XCTestCase {
         
         XCTAssertEqual(viewModel.movieData.count, 0)
         XCTAssertEqual(viewModel.currentPageValue, 1)
-    }
-    
-    func makeInMemoryContext() -> NSManagedObjectContext {
-        let container = NSPersistentContainer(name: "MovieFlixModel")
-        let description = NSPersistentStoreDescription()
-        description.type = NSInMemoryStoreType
-        container.persistentStoreDescriptions = [description]
-        
-        container.loadPersistentStores { _, error in
-            if let error = error {
-                fatalError("Failed to load in-memory store: \(error)")
-            }
-        }
-        
-        return container.viewContext
     }
 }

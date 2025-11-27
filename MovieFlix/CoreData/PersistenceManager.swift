@@ -14,6 +14,7 @@ protocol PersistenceProtocol {
                                                 key: String,
                                                 with value: String) -> [T]
     func save()
+    func delete(_ objectType: NSManagedObject)
 }
 
 final class PersistenceManager: PersistenceProtocol {
