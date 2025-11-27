@@ -27,6 +27,5 @@ final class FavoriteMoviesViewModel: ObservableObject {
                 voteAverage: movie.voteAverage
             )
         }
-        print("Favorites: ", favoriteMoviesList)
     }
 }

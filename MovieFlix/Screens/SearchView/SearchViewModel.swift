@@ -20,6 +20,17 @@ final class SearchViewModel: ObservableObject {
     private var totalPages = 1
     private var currentSearchText = ""
     
+    // MARK: - Injected Dependencies
+    private let network: NetworkServiceProtocol
+    private let persistence: PersistenceProtocol
+    private let context: NSManagedObjectContext
+    
+    init(network: NetworkServiceProtocol = NetworkManager.shared, persistence: PersistenceProtocol = PersistenceManager.shared, context: NSManagedObjectContext = PersistenceManager.shared.context) {
+        self.network = network
+        self.persistence = persistence
+        self.context = context
+    }
+    
     func getMoviesList(for searchText: String, reset: Bool = true) {
         let encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? searchText
         
@@ -30,7 +41,7 @@ final class SearchViewModel: ObservableObject {
         let request = MovieRouter.searchMovie(query: encodedSearchText, page: currentPage)
         isLoading = true
         
-        NetworkManager.shared.execute(urlRequest: request, model: MovieSearchResponse.self) { [weak self] result in
+        network.execute(urlRequest: request, request: nil, model: MovieSearchResponse.self) { [weak self] result in
             guard let self = self else { return }
             self.isLoading = false
             
@@ -63,19 +74,19 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func saveMoviesLocally(movieArray: [Movie]) {
-        let persistenceManager = PersistenceManager.shared
+//        let persistenceManager = PersistenceManager.shared
         guard let entity = NSEntityDescription.entity(
             forEntityName: "Movies",
-            in: persistenceManager.context
+            in: context
         ) else {
             debugPrint("Failed to get entity description")
             return
         }
         
         for movieData in movieArray {
-            let existingMovies: [Movies] = persistenceManager.fetchWithPredicate(Movies.self, key: "id", with: "\(movieData.id)")
+            let existingMovies: [Movies] = persistence.fetchWithPredicate(Movies.self, key: "id", with: "\(movieData.id)")
             if existingMovies.isEmpty {
-                let movies = Movies(entity: entity, insertInto: persistenceManager.context)
+                let movies = Movies(entity: entity, insertInto: context)
                 movies.id = Int64(movieData.id)
                 movies.title = movieData.title
                 movies.overview = movieData.overview
@@ -86,11 +97,11 @@ final class SearchViewModel: ObservableObject {
             }
         }
         
-        persistenceManager.save()
+        persistence.save()
     }
     
     func getSavedMovies() {
-        let savedMoviesArray = PersistenceManager.shared.fetch(Movies.self)
+        let savedMoviesArray = persistence.fetch(Movies.self)
         guard !savedMoviesArray.isEmpty else { return }
         
         movieData = savedMoviesArray.map { savedMoviesData in
@@ -107,7 +118,7 @@ final class SearchViewModel: ObservableObject {
     }
     
     func getFavoriteMoviesCount() {
-        let savedFavorites: [FavoriteMovies] = PersistenceManager.shared.fetch(FavoriteMovies.self)
+        let savedFavorites: [FavoriteMovies] = persistence.fetch(FavoriteMovies.self)
         favoriteMoviesCount = savedFavorites.count
     }
 }
