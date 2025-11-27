@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		042714562ED8444200DCC5A2 /* MovieFlixModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9E22ED56CAA00A53DF0 /* MovieFlixModel.xcdatamodeld */; };
+		0427146C2ED855FC00DCC5A2 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 0427146B2ED855F700DCC5A2 /* README.md */; };
 		046AF9DB2ED5531600A53DF0 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9DA2ED5531600A53DF0 /* MovieDetailsView.swift */; };
 		046AF9DE2ED55D6800A53DF0 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9DD2ED55D6800A53DF0 /* Double+Ext.swift */; };
 		046AF9E12ED56B6400A53DF0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9E02ED56B6400A53DF0 /* PersistenceManager.swift */; };
@@ -57,6 +58,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0427146B2ED855F700DCC5A2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.md; sourceTree = "<group>"; };
 		046AF9DA2ED5531600A53DF0 /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
 		046AF9DD2ED55D6800A53DF0 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		046AF9E02ED56B6400A53DF0 /* PersistenceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceManager.swift; sourceTree = "<group>"; };
@@ -188,9 +190,9 @@
 		04981DFB2ED447AD00C9EC3D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				04D224F22ED5B2D600A02618 /* FavoriteMovies */,
 				04981DFC2ED447B600C9EC3D /* SearchView */,
 				046AF9D92ED5530200A53DF0 /* MovieDetails */,
+				04D224F22ED5B2D600A02618 /* FavoriteMovies */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -263,6 +265,7 @@
 		04F22C5D2ED40C9400AE62EF = {
 			isa = PBXGroup;
 			children = (
+				0427146B2ED855F700DCC5A2 /* README.md */,
 				04981DF62ED4479600C9EC3D /* MovieFlix */,
 				04F22C762ED40C9600AE62EF /* MovieFlixTests */,
 				04F22C802ED40C9600AE62EF /* MovieFlixUITests */,
@@ -460,6 +463,7 @@
 				042714562ED8444200DCC5A2 /* MovieFlixModel.xcdatamodeld in Sources */,
 				04D224EF2ED5A83900A02618 /* FavoriteMovies+CoreDataClass.swift in Sources */,
 				046AF9E72ED56D7A00A53DF0 /* Movies+CoreDataClass.swift in Sources */,
+				0427146C2ED855FC00DCC5A2 /* README.md in Sources */,
 				046AF9E82ED56D7A00A53DF0 /* Movies+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
