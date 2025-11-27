@@ -57,7 +57,6 @@ final class SearchViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    @MainActor
     func testGetMoviesListSuccess() {
         let expectation = self.expectation(description: "Fetch movies")
         
@@ -78,7 +77,6 @@ final class SearchViewModelTests: XCTestCase {
         waitForExpectations(timeout: 1)
     }
     
-    @MainActor
     func testGetMoviesListFailure() {
         let expectation = self.expectation(description: "API failure")
         
@@ -96,6 +94,40 @@ final class SearchViewModelTests: XCTestCase {
         }
         
         waitForExpectations(timeout: 1)
+    }
+    
+    func testLoadMoreIfNeeded() {
+        let movie1 = Movie(id: 1, title: "Inception", overview: "", releaseDate: "", posterPath: "", backdropPath: "", voteAverage: 9.0)
+        let movie2 = Movie(id: 2, title: "Tenet", overview: "", releaseDate: "", posterPath: "", backdropPath: "", voteAverage: 8.5)
+        
+        let response1 = MovieSearchResponse(page: 1, results: [movie1], totalPages: 2, totalResults: 2)
+        let response2 = MovieSearchResponse(page: 2, results: [movie2], totalPages: 2, totalResults: 2)
+        
+        mockNetwork.result = .success(response1)
+        viewModel.getMoviesList(for: "Movie")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            XCTAssertEqual(self.viewModel.movieData.count, 1)
+            
+            self.mockNetwork.result = .success(response2)
+            self.viewModel.loadMoreIfNeeded(currentItem: movie1)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                XCTAssertEqual(self.viewModel.movieData.count, 2)
+                XCTAssertEqual(self.viewModel.movieData.last?.title, "Tenet")
+            }
+        }
+    }
+    
+    func testSearchReset() {
+        viewModel.movieData = [
+            Movie(id: 1, title: "Old Movie", overview: "", releaseDate: "", posterPath: "", backdropPath: "", voteAverage: 5.0)
+        ]
+        
+        viewModel.getMoviesList(for: "New Movie")
+        
+        XCTAssertEqual(viewModel.movieData.count, 0)
+        XCTAssertEqual(viewModel.currentPageValue, 1)
     }
     
     func makeInMemoryContext() -> NSManagedObjectContext {

@@ -20,12 +20,18 @@ final class SearchViewModel: ObservableObject {
     private var totalPages = 1
     private var currentSearchText = ""
     
+    var currentPageValue: Int { currentPage }
+    
     // MARK: - Injected Dependencies
     private let network: NetworkServiceProtocol
     private let persistence: PersistenceProtocol
     private let context: NSManagedObjectContext
     
-    init(network: NetworkServiceProtocol = NetworkManager.shared, persistence: PersistenceProtocol = PersistenceManager.shared, context: NSManagedObjectContext = PersistenceManager.shared.context) {
+    init(
+        network: NetworkServiceProtocol = NetworkManager.shared,
+        persistence: PersistenceProtocol = PersistenceManager.shared,
+        context: NSManagedObjectContext = PersistenceManager.shared.context
+    ) {
         self.network = network
         self.persistence = persistence
         self.context = context
@@ -74,7 +80,6 @@ final class SearchViewModel: ObservableObject {
     }
     
     private func saveMoviesLocally(movieArray: [Movie]) {
-//        let persistenceManager = PersistenceManager.shared
         guard let entity = NSEntityDescription.entity(
             forEntityName: "Movies",
             in: context
