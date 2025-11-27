@@ -64,6 +64,7 @@ struct MovieDetailsView: View {
                     Image(systemName: viewModel.isMovieFavorited ? "heart.fill" : "heart")
                         .foregroundColor(viewModel.isMovieFavorited ? .red : .white)
                 }
+                .accessibilityIdentifier("favoriteButton")
             }
         }
     }

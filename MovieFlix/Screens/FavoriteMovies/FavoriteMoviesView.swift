@@ -27,6 +27,7 @@ struct FavoriteMoviesView: View {
                 .listStyle(.plain)
             }
         }
+        .accessibilityIdentifier("favoritesPage")
         .navigationTitle("Favorites")
         .navigationBarTitleDisplayMode(.large)
         .onAppear {
