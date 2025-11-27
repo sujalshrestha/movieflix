@@ -1,14 +1,10 @@
-//
-//  README.md
-//  MovieFlix
-//
-//  Created by Sujal on 27/11/2025.
-//
-
 # MovieFlix
 
 MovieFlix is an iOS app built using **SwiftUI** that allows users to search for movies, view details, and save favorites. It follows the **MVVM architecture** for a clean separation of concerns, with a robust network layer and offline storage.
 
+![Search Screen](./Resources/Screenshots/search_screen.png)
+![Movie Details](./Resources/Screenshots/details_screen.png)
+                                                                                    
 ---
 
 ## **Architecture & Design**
