@@ -22,6 +22,7 @@ struct SearchView: View {
                         message: "No results found. Please search for your favorite movies."
                     )
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .accessibilityIdentifier("emptySearchResults")
                 } else {
                     VStack {
                         if viewModel.movieData.isEmpty {
@@ -50,6 +51,7 @@ struct SearchView: View {
                     LoadingIndicatorView()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .background(Color.black.opacity(0.3))
+                        .accessibilityIdentifier("loadingIndicator")
                 }
             }
             .navigationTitle(AppConstants.appName)
@@ -83,6 +85,7 @@ struct SearchView: View {
                     } label: {
                         Image(systemName: "heart")
                     }
+                    .accessibilityIdentifier("heart")
                     .badge(viewModel.favoriteMoviesCount)
                 }
             }
@@ -122,6 +125,7 @@ struct MovieCell: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(movie.title)
                     .font(.title3)
+                    .accessibilityIdentifier("movieTitleLabel")
                 
                 Text("Release Date: \(movie.releaseDate)")
                     .font(.caption)   

@@ -8,7 +8,16 @@
 import Foundation
 import CoreData
 
-final class PersistenceManager {
+protocol PersistenceProtocol {
+    func fetch<T: NSManagedObject>(_ object: T.Type) -> [T]
+    func fetchWithPredicate<T: NSManagedObject>(_ object: T.Type,
+                                                key: String,
+                                                with value: String) -> [T]
+    func save()
+    func delete(_ objectType: NSManagedObject)
+}
+
+final class PersistenceManager: PersistenceProtocol {
 
     private init() {}
     static let shared = PersistenceManager()
@@ -83,5 +92,4 @@ final class PersistenceManager {
             print ("There was an error while trying to delete the entity: \(entityName)")
         }
     }
-
 }

@@ -38,7 +38,7 @@ extension NetworkError {
         case .invalidURL:
             return "Invalid request. Please try again later."
         case .serverError(let message):
-            return "\(message). Please try again later."
+            return "\(message)"
         case .decodingError:
             return "Failed to process data. Please try again."
         case .unknown:

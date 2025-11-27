@@ -12,20 +12,29 @@ import Combine
 final class MovieDetailsViewModel: ObservableObject {
     
     @Published var isMovieFavorited: Bool = false
+    private let persistence: PersistenceProtocol
+    private let context: NSManagedObjectContext
+    
+    init(
+        persistence: PersistenceProtocol = PersistenceManager.shared,
+        context: NSManagedObjectContext = PersistenceManager.shared.context
+    ) {
+        self.persistence = persistence
+        self.context = context
+    }
     
     func addMovieToFavorite(movieData: Movie) {
-        let persistenceManager = PersistenceManager.shared
         guard let entity = NSEntityDescription.entity(
             forEntityName: "FavoriteMovies",
-            in: persistenceManager.context
+            in: context
         ) else {
             debugPrint("Failed to get entity description")
             return
         }
         
-        let existingMovies: [FavoriteMovies] = persistenceManager.fetchWithPredicate(FavoriteMovies.self, key: "id", with: "\(movieData.id)")
+        let existingMovies: [FavoriteMovies] = persistence.fetchWithPredicate(FavoriteMovies.self, key: "id", with: "\(movieData.id)")
         if existingMovies.isEmpty {
-            let movies = FavoriteMovies(entity: entity, insertInto: persistenceManager.context)
+            let movies = FavoriteMovies(entity: entity, insertInto: context)
             movies.id = Int64(movieData.id)
             movies.title = movieData.title
             movies.overview = movieData.overview
@@ -36,17 +45,16 @@ final class MovieDetailsViewModel: ObservableObject {
             isMovieFavorited = true
         } else {
             for movie in existingMovies {
-                persistenceManager.delete(movie)
+                persistence.delete(movie)
             }
             isMovieFavorited = false
         }
         
-        persistenceManager.save()
+        persistence.save()
     }
     
     func checkIfMovieIsInFavorite(movieData: Movie) {
-        let persistenceManager = PersistenceManager.shared
-        let existingMovies: [FavoriteMovies] = persistenceManager.fetchWithPredicate(FavoriteMovies.self, key: "id", with: "\(movieData.id)")
+        let existingMovies: [FavoriteMovies] = persistence.fetchWithPredicate(FavoriteMovies.self, key: "id", with: "\(movieData.id)")
         isMovieFavorited = !existingMovies.isEmpty
     }
 }

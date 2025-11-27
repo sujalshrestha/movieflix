@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042714562ED8444200DCC5A2 /* MovieFlixModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9E22ED56CAA00A53DF0 /* MovieFlixModel.xcdatamodeld */; };
 		046AF9DB2ED5531600A53DF0 /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9DA2ED5531600A53DF0 /* MovieDetailsView.swift */; };
 		046AF9DE2ED55D6800A53DF0 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9DD2ED55D6800A53DF0 /* Double+Ext.swift */; };
 		046AF9E12ED56B6400A53DF0 /* PersistenceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046AF9E02ED56B6400A53DF0 /* PersistenceManager.swift */; };
@@ -456,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04D224EE2ED5A83900A02618 /* FavoriteMovies+CoreDataProperties.swift in Sources */,
+				042714562ED8444200DCC5A2 /* MovieFlixModel.xcdatamodeld in Sources */,
 				04D224EF2ED5A83900A02618 /* FavoriteMovies+CoreDataClass.swift in Sources */,
 				046AF9E72ED56D7A00A53DF0 /* Movies+CoreDataClass.swift in Sources */,
 				046AF9E82ED56D7A00A53DF0 /* Movies+CoreDataProperties.swift in Sources */,
@@ -619,9 +621,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -630,6 +632,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sujalshrestha.MovieFlix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -652,9 +658,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -663,6 +669,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = sujalshrestha.MovieFlix;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
