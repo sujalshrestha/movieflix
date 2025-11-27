@@ -39,7 +39,7 @@ MovieFlix is an iOS app built using **SwiftUI** that allows users to search for 
 
 ## **Setup**
 
-1. Clone the repository:
+1. Clone the repository: (from the main branch)
 2. Open MovieFlix.xcodeproj in Xcode.
 3. Run the app on a simulator or device.
 
