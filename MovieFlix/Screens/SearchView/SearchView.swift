@@ -38,7 +38,9 @@ struct SearchView: View {
                                 )
                                 .onAppear {
                                     if !searchText.trimmingCharacters(in: .whitespaces).isEmpty {
-                                        viewModel.loadMoreIfNeeded(currentItem: movie)
+                                        Task {
+                                            await viewModel.loadMoreIfNeeded(currentItem: movie)
+                                        }
                                     }
                                 }
                             }
@@ -75,7 +77,7 @@ struct SearchView: View {
                 searchTask = Task { [weak viewModel] in
                     try? await Task.sleep(nanoseconds: 500 * 1_000_000)
                     guard !Task.isCancelled else { return }
-                    viewModel?.getMoviesList(for: trimmedValue, reset: true)
+                    await viewModel?.getMoviesList(for: trimmedValue, reset: true)
                 }
             }
             .toolbar {

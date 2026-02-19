@@ -23,6 +23,11 @@
 		04981DF92ED4479600C9EC3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04981DF32ED4479600C9EC3D /* Assets.xcassets */; };
 		04981DFE2ED447C900C9EC3D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981DFD2ED447C900C9EC3D /* SearchView.swift */; };
 		04981E012ED44ABA00C9EC3D /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981E002ED44ABA00C9EC3D /* NetworkManager.swift */; };
+		AB0000012F11111111111111 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000012F11111111111111 /* DataModel.swift */; };
+		AB0000022F11111111111111 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000022F11111111111111 /* HTTPMethod.swift */; };
+		AB0000032F11111111111111 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000032F11111111111111 /* NetworkError.swift */; };
+		AB0000042F11111111111111 /* NetworkServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000042F11111111111111 /* NetworkServiceProtocol.swift */; };
+		AB0000052F11111111111111 /* NetworkURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA0000052F11111111111111 /* NetworkURLRequest.swift */; };
 		04981E812ED44CBD00C9EC3D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981E802ED44CBD00C9EC3D /* SearchViewModel.swift */; };
 		04981E832ED4507600C9EC3D /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981E822ED4507600C9EC3D /* MovieModel.swift */; };
 		04981E872ED450B500C9EC3D /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04981E862ED450B500C9EC3D /* AppConstants.swift */; };
@@ -71,6 +76,11 @@
 		04981DF52ED4479600C9EC3D /* MovieFlixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFlixApp.swift; sourceTree = "<group>"; };
 		04981DFD2ED447C900C9EC3D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		04981E002ED44ABA00C9EC3D /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AA0000012F11111111111111 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		AA0000022F11111111111111 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		AA0000032F11111111111111 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		AA0000042F11111111111111 /* NetworkServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceProtocol.swift; sourceTree = "<group>"; };
+		AA0000052F11111111111111 /* NetworkURLRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkURLRequest.swift; sourceTree = "<group>"; };
 		04981E802ED44CBD00C9EC3D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		04981E822ED4507600C9EC3D /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		04981E862ED450B500C9EC3D /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -212,9 +222,30 @@
 			children = (
 				04981E882ED450D400C9EC3D /* ApiConstants.swift */,
 				04981E002ED44ABA00C9EC3D /* NetworkManager.swift */,
+				AC0000012F11111111111111 /* Models */,
+				AC0000022F11111111111111 /* Protocols */,
 				04981E8A2ED4511E00C9EC3D /* Routers */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		AC0000012F11111111111111 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000012F11111111111111 /* DataModel.swift */,
+				AA0000022F11111111111111 /* HTTPMethod.swift */,
+				AA0000032F11111111111111 /* NetworkError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AC0000022F11111111111111 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				AA0000042F11111111111111 /* NetworkServiceProtocol.swift */,
+				AA0000052F11111111111111 /* NetworkURLRequest.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		04981E842ED4509E00C9EC3D /* Utils */ = {
@@ -433,6 +464,11 @@
 				04981E8F2ED4553400C9EC3D /* LoadingIndicatorView.swift in Sources */,
 				046AF9DE2ED55D6800A53DF0 /* Double+Ext.swift in Sources */,
 				04981E012ED44ABA00C9EC3D /* NetworkManager.swift in Sources */,
+				AB0000012F11111111111111 /* DataModel.swift in Sources */,
+				AB0000022F11111111111111 /* HTTPMethod.swift in Sources */,
+				AB0000032F11111111111111 /* NetworkError.swift in Sources */,
+				AB0000042F11111111111111 /* NetworkServiceProtocol.swift in Sources */,
+				AB0000052F11111111111111 /* NetworkURLRequest.swift in Sources */,
 				04D224F02ED5A83900A02618 /* FavoriteMovies+CoreDataClass.swift in Sources */,
 				04D224F12ED5A83900A02618 /* FavoriteMovies+CoreDataProperties.swift in Sources */,
 				046AF9E92ED56D7A00A53DF0 /* Movies+CoreDataClass.swift in Sources */,

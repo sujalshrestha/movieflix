@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import CoreData
 
+@MainActor
 final class SearchViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
@@ -28,16 +29,24 @@ final class SearchViewModel: ObservableObject {
     private let context: NSManagedObjectContext
     
     init(
-        network: NetworkServiceProtocol = NetworkManager.shared,
-        persistence: PersistenceProtocol = PersistenceManager.shared,
-        context: NSManagedObjectContext = PersistenceManager.shared.context
+        network: NetworkServiceProtocol,
+        persistence: PersistenceProtocol,
+        context: NSManagedObjectContext
     ) {
         self.network = network
         self.persistence = persistence
         self.context = context
     }
+
+    convenience init() {
+        self.init(
+            network: NetworkManager.shared,
+            persistence: PersistenceManager.shared,
+            context: PersistenceManager.shared.context
+        )
+    }
     
-    func getMoviesList(for searchText: String, reset: Bool = true) {
+    func getMoviesList(for searchText: String, reset: Bool = true) async {
         let encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? searchText
         
         if reset { resetPageData(searchText: searchText) }
@@ -46,22 +55,21 @@ final class SearchViewModel: ObservableObject {
         
         let request = MovieRouter.searchMovie(query: encodedSearchText, page: currentPage)
         isLoading = true
-        
-        network.execute(urlRequest: request, request: nil, model: MovieSearchResponse.self) { [weak self] result in
-            guard let self = self else { return }
-            self.isLoading = false
-            
-            switch result {
-            case .success(let response):
-                movieData.append(contentsOf: response.results)
-                currentPage += 1
-                totalPages = response.totalPages
-                saveMoviesLocally(movieArray: response.results)
-                
-            case .failure(let error):
-                debugPrint("Error: ", error)
-                self.onApiError = (true, error.message)
-            }
+
+        defer { isLoading = false }
+
+        do {
+            let response: MovieSearchResponse = try await network.execute(urlRequest: request, request: nil)
+            movieData.append(contentsOf: response.results)
+            currentPage += 1
+            totalPages = response.totalPages
+            saveMoviesLocally(movieArray: response.results)
+        } catch let error as NetworkError {
+            debugPrint("Error: ", error)
+            onApiError = (true, error.message)
+        } catch {
+            debugPrint("Error: ", error)
+            onApiError = (true, NetworkError.unknown.message)
         }
     }
     
@@ -72,10 +80,10 @@ final class SearchViewModel: ObservableObject {
         currentSearchText = searchText
     }
     
-    func loadMoreIfNeeded(currentItem item: Movie) {
+    func loadMoreIfNeeded(currentItem item: Movie) async {
         guard let last = movieData.last else { return }
         if last.id == item.id && currentPage <= totalPages && !isLoading {
-            getMoviesList(for: currentSearchText, reset: false)
+            await getMoviesList(for: currentSearchText, reset: false)
         }
     }
     
